@@ -18,8 +18,8 @@ archive receipts
 init orders
     ${csvSource}    ask csv file link
     download csv    ${csvSource}
-    # ${url}=    Get Secret    link
-    Open Available Browser    https://robotsparebinindustries.com/#/robot-order
+    ${url}=    Get Secret    link
+    Open Available Browser    ${url}[URL]
     ${file}=    Read csv file
     FOR    ${row}    IN RANGE    0    2    1
         Log To Console    ${file[${row}]}

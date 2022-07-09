@@ -1,0 +1,29 @@
+tasks:
+  # Run all tasks:
+  #   shell: python -m robot --report NONE --outputdir output --logtitle "Task log" tasks.robot
+  Initiate order:
+    robotTaskName: start
+  
+  Initiate archiving:
+    command:
+      - python
+      - -m
+      - robot
+      - --report
+      - NONE
+      - --outputdir
+      - orderReceipts
+      - --logtitle
+      - Task log
+      - -t
+      - archive receipts
+      - tasks.robot
+
+condaConfigFile: conda.yaml
+artifactsDir: output
+PATH:
+  - .
+PYTHONPATH:
+  - .
+ignoreFiles:
+  - .gitignore

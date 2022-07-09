@@ -6,6 +6,7 @@ Library    RPA.PDF
 Library    RPA.Robocorp.Vault
 Library    Collections
 Library    RPA.Tables
+Library    RPA.Dialogs
 
 *** Tasks ***
 start
@@ -15,8 +16,9 @@ archive receipts
     archive    ${CURDIR}${/}output    receipts
 *** Keywords ***
 init orders
-    download csv    https://robotsparebinindustries.com/orders.csv
-    ${url}=    Get Secret    link
+    ${csvSource}    ask csv file link
+    download csv    ${csvSource}
+    # ${url}=    Get Secret    link
     Open Available Browser    https://robotsparebinindustries.com/#/robot-order
     ${file}=    Read csv file
     FOR    ${row}    IN RANGE    0    2    1
@@ -89,3 +91,8 @@ download csv
     Open Available Browser    ${url}
     Sleep    5
     [Teardown]    Close All Browsers
+
+ask csv file link
+    Add text input    link    csv source    http://source.com
+    ${input}=    Run dialog
+    RETURN    ${input.link}

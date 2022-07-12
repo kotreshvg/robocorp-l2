@@ -13,7 +13,7 @@ start
     init orders
 
 archive receipts
-    archive    ${CURDIR}${/}output    receipts
+    archive    ${CURDIR}${/}output    ${CURDIR}${/}orderReceipts/
 *** Keywords ***
 init orders
     ${csvSource}    ask csv file link

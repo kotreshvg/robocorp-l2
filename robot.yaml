@@ -20,7 +20,7 @@ tasks:
       - tasks.robot
 
 condaConfigFile: conda.yaml
-artifactsDir: output
+artifactsDir: output orderReceipts
 PATH:
   - .
 PYTHONPATH:

@@ -13,7 +13,7 @@ start
     init orders
 
 archive receipts
-    archive    ${CURDIR}${/}output    ${CURDIR}${/}orderReceipts/
+    archive    ${CURDIR}${/}output    ${CURDIR}${/}order
 *** Keywords ***
 init orders
     ${csvSource}    ask csv file link
@@ -21,7 +21,7 @@ init orders
     ${url}=    Get Secret    link
     Open Available Browser    ${url}[URL]
     ${file}=    Read csv file
-    FOR    ${row}    IN RANGE    0    2    1
+    FOR    ${row}    IN RANGE    0    20    1
         Log To Console    ${file[${row}]}
         Click Element    //*[@id="root"]/div/div[2]/div/div/div/div/div/button[1]
         Set Suite Variable    ${ORDER}    '${file[${row}][${0}]}'
@@ -32,6 +32,7 @@ init orders
         Preview and copy robot
         click order wait for success
     END
+    archive    ${CURDIR}${/}output    ${CURDIR}${/}order
 
 
 Read csv file
